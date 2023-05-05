@@ -49,9 +49,9 @@ todoListController.deleteTodo = async (req, res) => {
 // @access Public
 todoListController.updateTodo = async (req, res) => {
 	try {
-		const response = await Item.findByIdAndUpdate(req.params.id, { item: req.body.item });
+		const response = await Item.findByIdAndUpdate(req.params.id, { item: req.body.item }, { new: true });
 		// const response = await Item.updateOne({ item: req.params.item }, { item: req.body.item });
-		return res.sendStatus(200);
+		return res.status(200).json(response);
 	} catch (error) {
 		res.locals.error = error;
 		console.log(`Error in updateTodo: ${error}`);

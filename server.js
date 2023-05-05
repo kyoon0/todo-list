@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const todoRouter = require('./routes/todoRoutes');
-// const userRouter = require('./routes/userRoutes');
+const userRouter = require('./routes/userRoutes');
 
 // Connect to mongo db
 mongoose.connect('mongodb+srv://kevinyoon01:bMAeRnFLSgq4kyGA@todolist.bkue7mh.mongodb.net/test', { useNewUrlParser: true, useUnifiedTopology: true });
@@ -16,7 +16,7 @@ app.use('/', express.static('./client/src'));
 
 // Use url http://localhost:3000/
 app.use('/api/todo', todoRouter);
-// app.use('/api/user', userRouter);
+app.use('/api/users', userRouter);
 
 // app.get('/', (req, res) => {
 // 	res.status(200).send('Hello World');

@@ -1,21 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="./styles.css" />
-
-		<title>Todos</title>
+		<title>Register</title>
 	</head>
-		<h1>Todo List</h1>
-    <form id="todo-container">
-      <label>To Do:</label>
-      <input class="input" type="text" placeholder="Add a To Do..." >
-      <button class="addSubmit" type="submit">Add</button>
-    </form>
-		<p>Output will render here...</p>
-    <div id="list"></div>
- 		<script src="./main.js"></script>
+	<body>
+		<h1>Register</h1>
+		<form id="register">
+			<label>Username:</label>
+			<input type="text" id="username_register" />
+			<label>Password:</label>
+			<input type="password" id="password_register" />
+			<button type="submit">Create</button>
+		</form>
+
+    <h1>Login</h1>
+		<form id="login">
+			<label>Username:</label>
+			<input id="username_login" />
+			<label>Password:</label>
+			<input id="password_login" />
+			<button type="submit">Login</button>
+      
+		<script src="./registerlogin.js"></script>
 	</body>
 </html>

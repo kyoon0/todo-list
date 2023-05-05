@@ -79,21 +79,35 @@ const renderTodos = () => {
 	// @route PUT /api/todo
 	// @access Public
 	const editId = document.querySelectorAll('.editId');
+
 	editId.forEach((element, index) => {
 		element.addEventListener('click', (e) => {
-			// input.value = e.parentElement.previousElementSibling.innerHTML;
-			const updatedData = { item: input.value };
-			console.log(input.value);
-			let id = todoList[index]._id;
-			fetch(`/api/todo/${id}`, {
-				method: 'PUT',
-				body: JSON.stringify(updatedData),
-			})
-				.then((response) => response.json())
-				.then((data) => {
-					todoList = data;
-					renderTodos();
+			e.target.nextElementSibling.remove();
+			const edit_input = document.createElement('input');
+			element.parentElement.appendChild(edit_input);
+			edit_input.value = e.target.previousElementSibling.innerText;
+			const ok = document.createElement('button');
+			ok.setAttribute('class', 'editConfirm');
+			ok.innerText = 'OK';
+			element.parentElement.appendChild(ok);
+			if (ok) {
+				ok.addEventListener('click', (e) => {
+					const updatedData = { item: edit_input.value };
+					let id = todoList[index]._id;
+					fetch(`/api/todo/${id}`, {
+						method: 'PUT',
+						body: JSON.stringify(updatedData),
+						headers: {
+							'Content-Type': 'application/json',
+						},
+					})
+						.then((response) => response.json())
+						.then((data) => {
+							todoList = data;
+							getTodos();
+						});
 				});
+			}
 		});
 	});
 };
